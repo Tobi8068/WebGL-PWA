@@ -10,6 +10,7 @@
     <title>PAWTestTemplate</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
+    <link rel="manifest" href="manifest.webmanifest"/>
   </head>
   <body class="dark">
     <div id="unity-container" class="unity-desktop">
@@ -26,6 +27,17 @@
     </div>
     <div id="unity-fullscreen-button" style="display: none"></div>
     <script type="module">
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', function () {
+                navigator.serviceWorker.register('ServiceWorker.js')
+                .then(function(registeration) {
+                  console.log('Service worker registered successfully');
+                })
+                .catch(function(error) {
+                  console.log('Service worker registration failed:', error);
+                })
+              })
+            }
             const hideFullScreenButton = "";
             const buildUrl = "Build";
             const loaderUrl = buildUrl + "/TestWebGL.loader.js";

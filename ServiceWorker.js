@@ -20,18 +20,24 @@ self.addEventListener('install', function (e) {
 
 self.addEventListener('fetch', function (e) {
   e.respondWith((async function () {
+    if (
+      url.startsWith('chrome-extension') ||
+      url.includes('extension') ||
+      !(url.indexOf('http') === 0)
+    ) return;
     let response = await caches.match(e.request);
     console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
     if (response) { return response; }
 
-    try {
+    // Check if the requested resource is part of the contentToCache array
+    if (contentToCache.includes(new URL(e.request.url, self.location).pathname.slice(1))) {
       response = await fetch(e.request);
       const cache = await caches.open(cacheName);
       console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-      await cache.add(e.request.url);
-    } catch (error) {
-      console.error(`Error caching ${e.request.url}: ${error}`);
+      cache.put(e.request, response.clone());
+      return response;
+    } else {
+      return fetch(e.request);
     }
-    return response;
   })());
 });

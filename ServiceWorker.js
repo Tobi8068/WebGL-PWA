@@ -24,15 +24,14 @@ self.addEventListener('fetch', function (e) {
     console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
     if (response) { return response; }
 
-    // Check if the requested resource is part of the contentToCache array
-    if (contentToCache.includes(new URL(e.request.url, self.location).pathname.slice(1))) {
+    try {
       response = await fetch(e.request);
       const cache = await caches.open(cacheName);
       console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-      cache.put(e.request, response.clone());
-      return response;
-    } else {
-      return fetch(e.request);
+      await cache.add(e.request.url);
+    } catch (error) {
+      console.error(`Error caching ${e.request.url}: ${error}`);
     }
+    return response;
   })());
 });

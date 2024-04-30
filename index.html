@@ -81,30 +81,30 @@
       config.devicePixelRatio = 1;
     }
     loadingCover.style.display = "";
-    const script = document.createElement("script");
-    script.src = loaderUrl;
-    script.onload = () => {
-      import('./lib/thirdweb-unity-bridge.js').then(module => {
-        createUnityInstance(canvas, config, (progress) => {
-          spinner.style.display = "none";
-          progressBarEmpty.style.display = "";
-          progressBarFull.style.width = `${100 * progress}%`;
-        }).then((unityInstance) => {
-          loadingCover.style.display = "none";
-          if (canFullscreen) {
-            if (!hideFullScreenButton) {
-              fullscreenButton.style.display = "";
-            }
-            fullscreenButton.onclick = () => {
-              unityInstance.SetFullscreen(1);
-            };
-          }
-        }).catch((message) => {
-          alert(message);
-        });
-      });
-    };
-    document.body.appendChild(script);
+    // const script = document.createElement("script");
+    // script.src = loaderUrl;
+    // script.onload = () => {
+    //   import('./lib/thirdweb-unity-bridge.js').then(module => {
+    //     createUnityInstance(canvas, config, (progress) => {
+    //       spinner.style.display = "none";
+    //       progressBarEmpty.style.display = "";
+    //       progressBarFull.style.width = `${100 * progress}%`;
+    //     }).then((unityInstance) => {
+    //       loadingCover.style.display = "none";
+    //       if (canFullscreen) {
+    //         if (!hideFullScreenButton) {
+    //           fullscreenButton.style.display = "";
+    //         }
+    //         fullscreenButton.onclick = () => {
+    //           unityInstance.SetFullscreen(1);
+    //         };
+    //       }
+    //     }).catch((message) => {
+    //       alert(message);
+    //     });
+    //   });
+    // };
+    // document.body.appendChild(script);
   </script>
 </body>
 

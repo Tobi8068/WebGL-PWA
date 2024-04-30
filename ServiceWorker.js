@@ -1,10 +1,13 @@
 const cacheName = "Xex-PAWTestTemplate-1.0";
 const contentToCache = [
+  "/",
+  "index.html",
   "Build/TestWebGL.loader.js",
   "Build/TestWebGL.framework.js",
   "Build/TestWebGL.data",
   "Build/TestWebGL.wasm",
   "TemplateData/style.css",
+  "lib/thirdweb-unity-bridge.js",
   "manifest.json",
 ];
 

@@ -7,7 +7,6 @@ const contentToCache = [
   "Build/TestWebGL.data",
   "Build/TestWebGL.wasm",
   "TemplateData/style.css",
-  "lib/thirdweb-unity-bridge.js",
   "manifest.json",
 ];
 

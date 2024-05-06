@@ -1,13 +1,12 @@
 {
-  "name": "PAWTestTemplate",
-  "short_name": "PAWTestTemplate",
-  "start_url": "/",
-  "display": "fullscreen",
-  "background_color": "#231F20",
-  "theme_color": "#000",
-  "description": "XEX",
-  "icons": [
-    {
+    "name": "PAWTestTemplate",
+    "short_name": "PAWTestTemplate",
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "background_color": "#231F20",
+    "theme_color": "#000",
+    "description": "XEX",
+    "icons": [{
       "src": "TemplateData/icons/unity-logo-dark.png",
       "sizes": "144x144",
       "type": "image/png",
@@ -18,7 +17,5 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
-    }
-  ],
-  "prefer_related_applications": false
-}
+      }]
+  }
